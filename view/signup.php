@@ -65,6 +65,11 @@
               </div>
 
               <div class="form-group">
+                <label for="lastname">From when ?</label>
+                <input type="date" class="form-control" name="startdate">
+              </div>
+
+              <div class="form-group">
                 <label for="lastname">Location</label>
                 <input type="text" class="form-control" name="location" placeholder="">
             </div>q

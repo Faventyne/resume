@@ -47,6 +47,7 @@ if(isset($_POST['insert_mailpwd'])){
                     $pdoStatement->bindValue(':email',$mail, PDO::PARAM_STR);
                     $pdoStatement->bindValue(':pwd', $encPwd, PDO::PARAM_STR);
                     $pdoStatement->execute();
+                    $lastId = $pdo->lastInsertId();
                     $trig=1;
                 }
             } else {
@@ -68,16 +69,25 @@ if(isset($_POST['insert_mailpwd'])){
 
 if(isset($_POST['insert_role'])){
     //Check if fields are filled
-        if(isset($_POST['firstname'],$_POST['lastname'],$_POST['company'],$_POST['location'])){
+    if(isset($_POST['firstname'],$_POST['lastname'],$_POST['company'],$_POST['location'],$_POST['startdate'])){
 
-            $fname=$_POST['firstname'];
-            $lame=$_POST['lastname'];
+        $fname=$_POST['firstname'];
+        $lname=$_POST['lastname'];
+        $startdate=$_POST['startdate'];
 
-            if (strlen($fname)>=2 && strlen($lname)>=2){
-                $sql=INSERT 
-            }
-
+        if (strlen($fname)>=2 && strlen($lname)>=2){
+            $sql="INSERT INTO experience(exp_title,exp_company,exp_location,exp_startdate,exp_enddate,user_sur_id)
+            VALUES (:title,:company,:location,:startdate,'2070-01-01',".$lastId.")";
+            $pdoStatement=$pdo->prepare($sql);
+            $pdoStatement->bindValue(':title',$mail, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':company', $_POST['company'], PDO::PARAM_STR);
+            $pdoStatement->bindValue(':location', $_POST['location'], PDO::PARAM_STR);
+            $pdoStatement->bindValue(':startdate', $startdate, PDO::PARAM_STR);
+            $pdoStatement->execute();
         }
+    }
+}
+
 
 require_once __DIR__ .'/../view/header.php';
 require_once __DIR__ .'/../view/signup.php';
