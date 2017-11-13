@@ -34,7 +34,7 @@
         <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
       </li>
 
-      <?php if(isset($_SESSION['role'])) : ?>
+      <?php if(isset($_SESSION['id'])) : ?>
           <li class="nav-item">
             <a class="nav-link" href="profile.php">My profile</a>
           </li>

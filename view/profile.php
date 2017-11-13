@@ -1,43 +1,17 @@
-<?= $offset ?>
+<div class="card w-75 mx-auto">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title"><?php echo $user['usr_firstname'].' '.$user['usr_lastname'] ?></h4>
+    <p class="card-text">Détails</p>
+  </div>
+  <ul class="list-group list-group-flush">
 
-<form action=""  method="post">
-    <div class="form-group col-md-4">
-      <label for="city">Nombre de résultats par page :</label>
-      <select name="nbResults" class="form-control">
-        <option value="5" selected> 5</option>
-        <option value="20"> 20</option>
-        <option value="50"> 50</option>
-        <option value="100"> 100</option>
-      </select>
-    </div>
+    <li class="list-group-item">Son titre: <?php echo $user['exp_title'] ?></li>
+    <li class="list-group-item">Sa compagnie : <?php echo $user['exp_company'] ?></li>
 
-    <button class="btn btn-primary" type="submit">Rafraichir la page</button>
-</form>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Prenom</th>
-      <th scope="col">Email</th>
-      <th scope="col">Date de naissance</th>
-      <th scope="col">Plus...</th>
-    </tr>
-  </thead>
- <tbody>
-  <?php foreach ($results as $key => $value): ?>
-      <tr>
-        <th scope="row"> <?php echo $results[$key]['stu_id'] ?></th>
-        <td><?php echo $results[$key]['stu_lastname'] ?></td>
-        <td><?php echo $results[$key]['stu_firstname'] ?></td>
-        <td><?php echo $results[$key]['stu_email'] ?></td>
-        <td><?php echo $results[$key]['stu_birthdate'] ?></td>
-        <td><a href="<?php echo '/student.php?id=' . $results[$key]['stu_id'] ?>" class="btn btn-info btn-sm all" role="button">Details</a></td>
-      </tr>
-  <?php endforeach; ?>
-  </tbody>
-</table>
-
-<a href="<?php echo 'list.php?page=' . (($offset>=2) ? ($offset-1) : 1) ?>" class="btn btn-info btn-sm all" role="button"> Précédent </a>
-<a href="<?php echo 'list.php?page=' . ($offset+1) ?>" class="btn btn-info btn-sm all" role="button"> Suivant </a>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>

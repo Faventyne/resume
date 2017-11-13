@@ -1,0 +1,23 @@
+main{
+  text-align: center;
+  background-image: url("../resources/images/twentyninepalms.jpg");
+  background-size: cover;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+/*header{
+  max-height:15vh;
+}
+
+footer{
+  display: block;
+  max-height:5vh;
+}
+
+label{
+
+  text-align: left;
+}
+*/

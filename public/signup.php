@@ -43,11 +43,12 @@ if(isset($_POST['insert_mailpwd'])){
                     $sql="INSERT INTO user(usr_mail,usr_pwd,usr_role)
                     VALUES (:email,:pwd,'user')";
                     $pdoStatement=$pdo->prepare($sql);
-                    $encPwd=password_hash($pwd1,PASSWORD_BCRYPT);
+                    $encPwd=password_hash($pwd1,PASSWORD_DEFAULT);
                     $pdoStatement->bindValue(':email',$mail, PDO::PARAM_STR);
                     $pdoStatement->bindValue(':pwd', $encPwd, PDO::PARAM_STR);
                     $pdoStatement->execute();
-                    $lastId = $pdo->lastInsertId();
+                    $_SESSION['id']= $pdo->lastInsertId();
+                    $_SESSION['role']= 'user';
                     $trig=1;
                 }
             } else {
@@ -69,21 +70,33 @@ if(isset($_POST['insert_mailpwd'])){
 
 if(isset($_POST['insert_role'])){
     //Check if fields are filled
-    if(isset($_POST['firstname'],$_POST['lastname'],$_POST['company'],$_POST['location'],$_POST['startdate'])){
+    if(isset($_POST['firstname'],$_POST['lastname'],$_POST['title'],$_POST['company'],$_POST['location'],$_POST['startdate'])){
 
         $fname=$_POST['firstname'];
         $lname=$_POST['lastname'];
         $startdate=$_POST['startdate'];
 
         if (strlen($fname)>=2 && strlen($lname)>=2){
-            $sql="INSERT INTO experience(exp_title,exp_company,exp_location,exp_startdate,exp_enddate,user_sur_id)
-            VALUES (:title,:company,:location,:startdate,'2070-01-01',".$lastId.")";
+
+            $sql="UPDATE user
+            SET usr_firstname=:fname ,usr_lastname=:lname
+            WHERE usr_id = ". $_SESSION["id"];
             $pdoStatement=$pdo->prepare($sql);
-            $pdoStatement->bindValue(':title',$mail, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':fname',$fname, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':lname', $lname, PDO::PARAM_STR);
+            $pdoStatement->execute();
+
+
+            $sql="INSERT INTO experience(exp_title,exp_company,exp_location,exp_startdate,exp_enddate,user_usr_id)
+            VALUES (:title,:company,:location,:startdate,'2070-01-01',".$_SESSION['id'].")";
+            $pdoStatement=$pdo->prepare($sql);
+            $pdoStatement->bindValue(':title',$_POST['title'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':company', $_POST['company'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':location', $_POST['location'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':startdate', $startdate, PDO::PARAM_STR);
             $pdoStatement->execute();
+            header("Location: profile.php");
+            exit;
         }
     }
 }
