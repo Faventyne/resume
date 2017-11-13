@@ -29,14 +29,15 @@ if(isset($_POST['signin'])){
             print_r($pwd);
             print_r($user);
 
-            if(password_verify($pwd,"'".$user['usr_pwd']."'")){
+            if(password_verify($pwd,$user['usr_pwd'])){
                 print_r($user);
 
                 echo "Votre adresse IP est". $ip_address;
 
-                //$_SESSION['id']=$user['usr_id'];
-                //$_SESSION['role']=$user['usr_role'];
-                //header("Location: profile.php");
+                $_SESSION['id']=$user['usr_id'];
+                $_SESSION['role']=$user['usr_role'];
+                header("Location: profile.php");
+                exit;
                 //print_r($_SESSION);
             } else {
                 echo "Le mot de passe saisi est incorrect. Veuillez vous assurer du mot de passe";

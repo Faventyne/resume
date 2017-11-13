@@ -87,12 +87,13 @@ if(isset($_POST['insert_role'])){
             $pdoStatement->execute();
 
 
-            $sql="INSERT INTO experience(exp_title,exp_company,exp_location,exp_startdate,exp_enddate,user_usr_id)
-            VALUES (:title,:company,:location,:startdate,'2070-01-01',".$_SESSION['id'].")";
+            $sql="INSERT INTO experience(exp_title,exp_company,exp_location,exp_comment,exp_startdate,exp_enddate,user_usr_id)
+            VALUES (:title,:company,:location,:comments,:startdate,'2070-01-01',".$_SESSION['id'].")";
             $pdoStatement=$pdo->prepare($sql);
             $pdoStatement->bindValue(':title',$_POST['title'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':company', $_POST['company'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':location', $_POST['location'], PDO::PARAM_STR);
+            $pdoStatement->bindValue(':comment', $_POST['comment'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':startdate', $startdate, PDO::PARAM_STR);
             $pdoStatement->execute();
             header("Location: profile.php");

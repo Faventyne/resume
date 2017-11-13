@@ -2,8 +2,6 @@
 ini_set('display_errors',1);
 error_reporting(E_ALL | E_STRICT);
 
-
-
 require_once __DIR__ .'/../inc/config.php';
 
 if(isset($_POST['disconnect']))

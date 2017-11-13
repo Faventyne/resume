@@ -13,74 +13,77 @@
       <p>Désolé, ce mail existe déjà en base !</p>
   <?php endif; ?>
 
-  <?php if($trig!=1) : ?>
+
 
 
       <div class="container">
         <div class="card w-75 mx-auto mt-auto mb-auto">
             <div class="card-body">
-                <h4 class="card-title"> Step 1 : signup </h4>
-                <form action="" method="post">
-                  <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="pwd1">Password</label>
-                    <input type="password" class="form-control" name="pwd1" placeholder="Password">
-                  </div>
 
-                  <div class="form-group">
-                    <label for="pwd2">Confirm Password</label>
-                    <input type="password" class="form-control" name="pwd2" placeholder="Password">
-                  </div>
+                <?php if($trig!=1) : ?>
 
-                  <input type="submit" class="btn btn-primary" name="insert_mailpwd" value="Signup">
-                </form>
+                    <h4 class="card-title"> Signup </h4>
+                    <form action="" method="post">
+                      <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="pwd1">Password</label>
+                        <input type="password" class="form-control" name="pwd1" placeholder="Password">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="pwd2">Confirm Password</label>
+                        <input type="password" class="form-control" name="pwd2" placeholder="Password">
+                      </div>
+
+                      <input type="submit" class="btn btn-primary" name="insert_mailpwd" value="Signup">
+                    </form>
+
+                <?php else: ?>
+                     <h4 class="card-title"> Add info profile</h4>
+                     <form action="" method="post">
+                       <div class="form-group">
+                         <label for="firstname">First Name</label>
+                         <input type="text" class="form-control" name="firstname" aria-describedby="emailHelp" placeholder="John">
+                       </div>
+                       <div class="form-group">
+                         <label for="lastname">Last Name</label>
+                         <input type="text" class="form-control" name="lastname" placeholder="Doe">
+                       </div>
+
+                       <div class="form-group">
+                         <label for="lastname">Actual role</label>
+                         <input type="text" class="form-control" name="title" placeholder="">
+                       </div>
+
+                       <div class="form-group">
+                         <label for="lastname">Actual company</label>
+                         <input type="text" class="form-control" name="company" placeholder="">
+                       </div>
+
+                       <div class="form-group">
+                         <label for="lastname">Role descriptions</label>
+                         <input type="textarea" class="form-control" name="comment" placeholder="">
+                       </div>
+
+                       <div class="form-group">
+                         <label for="lastname">From when ?</label>
+                         <input type="date" class="form-control" name="startdate">
+                       </div>
+
+                       <div class="form-group">
+                         <label for="lastname">Location</label>
+                         <input type="text" class="form-control" name="location" placeholder="">
+                       </div>
+
+                       <input type="submit" class="btn btn-primary" name="insert_role" value="Update">
+
+                     </form>
+                <?php endif; ?>
             </div>
         </div>
-      </div>
-
-  <?php else: ?>
-
-    <div class="card w-75 mx-auto">
-      <div class="card-body">
-        <h4 class="card-title"> Step 2 : feed your profile</h4>
-        <form action="" method="post">
-          <div class="form-group">
-            <label for="firstname">First Name</label>
-            <input type="text" class="form-control" name="firstname" aria-describedby="emailHelp" placeholder="First name">
-          </div>
-          <div class="form-group">
-            <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" name="lastname" placeholder="Password">
-          </div>
-
-          <div class="form-group">
-            <label for="lastname">Actual role</label>
-            <input type="text" class="form-control" name="title" placeholder="">
-          </div>
-
-          <div class="form-group">
-            <label for="lastname">Actual company</label>
-            <input type="text" class="form-control" name="company" placeholder="">
-          </div>
-
-          <div class="form-group">
-            <label for="lastname">From when ?</label>
-            <input type="date" class="form-control" name="startdate">
-          </div>
-
-          <div class="form-group">
-            <label for="lastname">Location</label>
-            <input type="text" class="form-control" name="location" placeholder="">
-          </div>
-
-          <input type="submit" class="btn btn-primary" name="insert_role" value="Update">
-
-        </form>
-      </div>
     </div>
-  <?php endif; ?>
 </main>
