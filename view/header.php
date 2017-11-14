@@ -19,7 +19,8 @@
 
   <!-- Javascript libraries -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"> </script>
-
+  <!-- Google captcha library -->
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <!-- mon CSS -->
   <link rel="stylesheet" href="css/style.css">
   <title>Jobflow</title>
@@ -57,9 +58,6 @@
                           <input type="submit" class="nav-link btn-primary" name="disconnect" value="Deconnexion">
                       </form>
                   </li>
-                  </li>
-                    <span class ="nav-link">Votre Id : <?= $_SESSION['id'] ?></span>
-                  </li>
               <?php else : ?>
                   </li>
                     <a class="nav-link" href="signup.php">Inscription</a>
@@ -69,12 +67,12 @@
                   </li>
 
               <?php endif; ?>
-              <li>
+              <!-- <li>
                   <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                   </form>
-              </li>
+              </li> -->
 
             </ul>
 

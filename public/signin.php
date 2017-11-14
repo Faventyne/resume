@@ -7,6 +7,18 @@ require_once __DIR__ .'/../inc/config.php';
 
 if(isset($_POST['signin'])){
 
+    if (isset($_POST['g-recaptcha-response'])){
+        $captcha=$_POST['g-recaptcha-response'];
+        $curl = new Curl\Curl();
+        $curl->post("https://www.google.com/recaptcha/api/siteverify", array(
+            'secret' => '6LcPsjgUAAAAABbhb-yhuM2nVPDG03Fs5RzpcRXV',
+            'response' => $captcha
+        ));
+        $content = json_decode($curl->response,true);
+        print_r($content);
+        exit;
+    }
+
     if (isset($_POST['email'],$_POST['pwd'])){
         $email=$_POST['email'];
         $pwd=$_POST['pwd'];

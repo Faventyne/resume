@@ -25,7 +25,7 @@ function sendEmail($to,$subject,$hmtlContent,$textContent=''){
     $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
     try {
         //Server settings
-        $mail->SMTPDebug = 4;                                 // Enable verbose debug output
+        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = $config['MAIL_HOST'];                       // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -44,14 +44,14 @@ function sendEmail($to,$subject,$hmtlContent,$textContent=''){
 
         //Recipients
         $mail->setFrom('guitchat@gmail.com', 'Guillaume');
-        $mail->addAddress('guillaume.chatelain@outlook.com', 'Gui');     // Add a recipient
+        $mail->addAddress($to);     // Add a recipient
                   // Name is optional
 
         //Content
         $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = 'Here is the subject';
-        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->Subject = $subject;
+        $mail->Body    = $hmtlContent;
+        $mail->AltBody = $textContent;
 
         $mail->send();
         echo 'Message has been sent';
@@ -82,4 +82,21 @@ function displayExpDates($start,$end){
 		}
 
 	}
+}
+
+function displaySkillLevel($level){
+	if($level=="Elementary"){
+		echo '<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star-o" aria-hidden="true"></i>
+		<i class="fa fa-star-o" aria-hidden="true"></i>';
+	} elseif ($level=="Professional") {
+		echo '<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star-o" aria-hidden="true"></i>';
+	} elseif ($level=="Expert") {
+		echo '<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star" aria-hidden="true"></i>';
+	}
+
 }

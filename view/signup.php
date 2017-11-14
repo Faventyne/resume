@@ -44,7 +44,7 @@
 
                 <?php else: ?>
                      <h4 class="card-title"> Add info profile</h4>
-                     <form action="" method="post">
+                     <form action="" method="post" enctype="multipart/form-data">
                        <div class="form-group">
                          <label for="firstname">First Name</label>
                          <input type="text" class="form-control" name="firstname" aria-describedby="emailHelp" placeholder="John">
@@ -52,6 +52,17 @@
                        <div class="form-group">
                          <label for="lastname">Last Name</label>
                          <input type="text" class="form-control" name="lastname" placeholder="Doe">
+                       </div>
+
+                       <div class="form-group">
+                           <fieldset>
+                           <input type="hidden" name="submitFile" value="1" />
+                           <label for="fileForm">Photo (Permitted formats: jpg, jpeg and png)</label><br>
+                           <input type="file" name="fileForm" id="fileForm" />
+                           <p class="help-block"></p>
+                           <input type="submit" name="upload" class="btn btn-success fileinput-button" value="Add files...">
+                           <!-- <input type="submit" class="btn btn-success btn-block" value="Téléverser" /> -->
+                           </fieldset>
                        </div>
 
                        <div class="form-group">
@@ -69,9 +80,17 @@
                          <input type="textarea" class="form-control" name="comment" placeholder="">
                        </div>
 
-                       <div class="form-group">
-                         <label for="lastname">From when ?</label>
-                         <input type="date" class="form-control" name="startdate">
+                       <div class="row ">
+                           <div class="form-group col-md-6">
+                             <label for="lastname">From </label>
+                             <input type="date" class="form-control" name="startdate">
+                           </div>
+
+                           <div class="form-group col-md-6">
+                             <label for="lastname">To </label>
+                             <input type="date" class="form-control" name="enddate" aria-describedby="dateHelp">
+                             <small id="dateHelp" class="form-text text-muted"> Leave blank if actual </small>
+                           </div>
                        </div>
 
                        <div class="form-group">

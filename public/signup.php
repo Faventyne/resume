@@ -49,6 +49,7 @@ if(isset($_POST['insert_mailpwd'])){
                     $pdoStatement->execute();
                     $_SESSION['id']= $pdo->lastInsertId();
                     $_SESSION['role']= 'user';
+                    $_SESSION['email']= $_POST['email'];
                     $trig=1;
                 }
             } else {
@@ -88,14 +89,17 @@ if(isset($_POST['insert_role'])){
 
 
             $sql="INSERT INTO experience(exp_title,exp_company,exp_location,exp_comment,exp_startdate,exp_enddate,user_usr_id)
-            VALUES (:title,:company,:location,:comments,:startdate,'2070-01-01',".$_SESSION['id'].")";
+            VALUES (:title,:company,:location,:comment,:startdate,:enddate,".$_SESSION['id'].")";
             $pdoStatement=$pdo->prepare($sql);
             $pdoStatement->bindValue(':title',$_POST['title'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':company', $_POST['company'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':location', $_POST['location'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':comment', $_POST['comment'], PDO::PARAM_STR);
             $pdoStatement->bindValue(':startdate', $startdate, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':enddate', $_POST['enddate'], PDO::PARAM_STR);
             $pdoStatement->execute();
+            $htmlContent="<h1> C'est moi</h1><br><p>Proclivior sermonum remissior proclivior sermonum et amicitiae mediocre quidem et et Tristitia remissior gravitatem suavitas haudquaquam et atque et re atque Tristitia dulcior ad autem quidem quaedam dulcior omni amicitiae.</p>";
+            sendEmail('guitchat@gmail.com','Bienvenue sur le site',$htmlContent);
             header("Location: profile.php");
             exit;
         }

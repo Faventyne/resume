@@ -7,8 +7,12 @@ main{
   align-items: center;
 }
 
-.expdates{
+.expdates,.skill_levels{
     float: right;
+}
+
+.fa-plus,.fa-minus{
+    color: white;
 }
 
 .card img {
