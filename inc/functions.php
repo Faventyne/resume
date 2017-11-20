@@ -31,7 +31,8 @@ function sendEmail($to,$subject,$hmtlContent,$textContent=''){
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->Username = $config['MAIL_USERNAME'];                 // SMTP username
         $mail->Password = $config['MAIL_PASSWORD'];
-        print_r($mail->Password);                           // SMTP password
+				//print_r($mail->Username);
+				//print_r($mail->Password);                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
 
@@ -54,7 +55,8 @@ function sendEmail($to,$subject,$hmtlContent,$textContent=''){
         $mail->AltBody = $textContent;
 
         $mail->send();
-        echo 'Message has been sent';
+        //echo 'Message has been sent';
+
     } catch (Exception $e) {
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;

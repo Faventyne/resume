@@ -16,7 +16,7 @@
             </div>
 
             <input type="submit" class="btn btn-primary" name="signin" value="Submit">
-            <div class="g-recaptcha" data-sitekey="6LcPsjgUAAAAADH6-6Mn21yzRVKwsP2L47oLdBAE"></div>
+            <!-- <div class="g-recaptcha" data-sitekey="6LcPsjgUAAAAADH6-6Mn21yzRVKwsP2L47oLdBAE"></div> -->
           </form>
 
       </div>

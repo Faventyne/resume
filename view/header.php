@@ -47,7 +47,7 @@
                   </li>
 
                   </li>
-                    <a class="nav-link" href="add.php">My flow</a>
+                    <a class="nav-link" href="flow.php">My flow</a>
                   </li>
 
               <?php endif; ?>
@@ -68,12 +68,15 @@
                   </li>
 
               <?php endif; ?>
-              <!-- <li>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
-              </li> -->
+              <?php if(isset($_POST['search'])) : ?>
+                <li>
+                    <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" name="search-fname" placeholder="First Name" aria-label="Search">
+                      <input class="form-control mr-sm-2" type="search" name="search-lname" placeholder="Last Name" aria-label="Search">
+                      <button class="btn btn-primary my-2 my-sm-0" name="search" type="submit">Search</button>
+                    </form>
+                </li>
+              <?php endif; ?>
 
             </ul>
 

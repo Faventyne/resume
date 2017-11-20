@@ -20,7 +20,7 @@
         <div class="card w-75 mx-auto mt-auto mb-auto">
             <div class="card-body">
 
-                <?php if($trig!=1) : ?>
+                <?php if(!isset($emailPwdOK) || isset($emailPwdOK) && $emailPwdOK == false) : ?>
 
                     <h4 class="card-title"> Signup </h4>
                     <form action="" method="post">
@@ -43,26 +43,35 @@
                     </form>
 
                 <?php else: ?>
-                     <h4 class="card-title"> Add info profile</h4>
-                     <form action="" method="post" enctype="multipart/form-data">
-                       <div class="form-group">
+                    <h4 class="card-title"> Add info profile</h4>
+                    <form action="" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
                          <label for="firstname">First Name</label>
-                         <input type="text" class="form-control" name="firstname" aria-describedby="emailHelp" placeholder="John">
-                       </div>
-                       <div class="form-group">
+                         <input type="text" class="form-control" name="firstname" aria-describedby="emailHelp" placeholder="  ">
+                      </div>
+                      <div class="form-group">
                          <label for="lastname">Last Name</label>
-                         <input type="text" class="form-control" name="lastname" placeholder="Doe">
-                       </div>
+                         <input type="text" class="form-control" name="lastname" placeholder="">
+                      </div>
 
-                       <div class="form-group">
-                           <fieldset>
-                           <input type="hidden" name="submitFile" value="1" />
-                           <label for="fileForm">Photo (Permitted formats: jpg, jpeg and png)</label><br>
-                           <input type="file" name="fileForm" id="fileForm" />
-                           <p class="help-block"></p>
-                           <input type="submit" name="upload" class="btn btn-success fileinput-button" value="Add files...">
+                      <div class="form-group">
+                          <fieldset>
+                          <input type="hidden" name="submitFile" value="1500000" />
+
+
+                          <label for="fileForm">Photo (Permitted formats: jpg, jpeg and png)</label><br>
+                          <input type="file" name="pic" id="pic" />
+                          <p class="help-block">
+                          <?php if(isset($photoOK) && $photoOK) : ?>
+                             <?= $_FILES['pic']['name']. ": File correctly uploaded"; ?>
+                          <?php elseif(isset($photoOK) && !$photoOK) : ?>
+                            <?= $photoErrMsg; ?>
+                          <?php endif; ?>
+                          </p>
+                          <input type="submit" name="upload" class="btn btn-success fileinput-button" value="Add files...">
+
                            <!-- <input type="submit" class="btn btn-success btn-block" value="Téléverser" /> -->
-                           </fieldset>
+                          </fieldset>
                        </div>
 
                        <div class="form-group">

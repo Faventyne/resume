@@ -38,13 +38,13 @@ if(isset($_POST['signin'])){
         if(empty($user)){
             echo "Adresse email non valide. Veuillez vérifier votre adresse ou vous inscrire";
         } else {
-            print_r($pwd);
-            print_r($user);
+            //print_r($pwd);
+            //print_r($user);
 
             if(password_verify($pwd,$user['usr_pwd'])){
-                print_r($user);
+                //print_r($user);
 
-                echo "Votre adresse IP est". $ip_address;
+                //echo "Votre adresse IP est". $ip_address;
 
                 $_SESSION['id']=$user['usr_id'];
                 $_SESSION['role']=$user['usr_role'];

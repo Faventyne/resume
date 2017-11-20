@@ -6,13 +6,18 @@ require_once __DIR__ .'/../inc/config.php';
 $trig=0;
 $pwd1=$pwd2='';
 $mailExists = false;
-//$pattern = '^(?=.*?[A-Z])(?=.*?[0-9])[\w]{8,}$';
+global $mail;
+global $pwd;
+
+$pattern = '/^(?=.*?[A-Z])(?=.*?[0-9])[\w]{8,}$/';
 //If form has been submitted
 if(isset($_POST['insert_mailpwd'])){
+
+    $emailPwdOK = false;
 //Check if fields are filled
     if(isset($_POST['email'],$_POST['pwd1'],$_POST['pwd2'])){
         //check if email is correct
-        $mail= trim(strip_tags($_POST['email']));
+        $mail = trim(strip_tags($_POST['email']));
 
 
         if(filter_var($mail,FILTER_VALIDATE_EMAIL)){
@@ -40,45 +45,93 @@ if(isset($_POST['insert_mailpwd'])){
                 //preg_match($pattern,$password);
                 //check if passwords are similar and long enough
                 if(strlen($pwd1)>=8 && $pwd1==$pwd2 /*&& preg_match($pattern,$pwd1)==1*/){
-                    $sql="INSERT INTO user(usr_mail,usr_pwd,usr_role)
-                    VALUES (:email,:pwd,'user')";
-                    $pdoStatement=$pdo->prepare($sql);
-                    $encPwd=password_hash($pwd1,PASSWORD_DEFAULT);
-                    $pdoStatement->bindValue(':email',$mail, PDO::PARAM_STR);
-                    $pdoStatement->bindValue(':pwd', $encPwd, PDO::PARAM_STR);
-                    $pdoStatement->execute();
-                    $_SESSION['id']= $pdo->lastInsertId();
-                    $_SESSION['role']= 'user';
-                    $_SESSION['email']= $_POST['email'];
-                    $trig=1;
+                    $emailPwdOK = true;
+                    $pwd = $pwd1;
+                    $_SESSION['email']= $mail;
+                    $encPwd=password_hash($pwd,PASSWORD_DEFAULT);
+                    $_SESSION['pwd']= $encPwd;
+                } else {
+                    echo "Passwords should be similar and at least with 8 characters";
                 }
             } else {
                 echo "This email address already exists in our database, make sure you have not already an account !";
             }
-
-            /*
-            else if($pwd1!=$pwd2){
-                echo "Erreur ! Les mots de passe sont différents";
-            } else if(strlen($pwd1)<6){
-                echo "Veuillez saisir un mot de passe supérieur à 6 caracteres !!";
-            }
-            */
         } else{
             echo "Désolé, nous ne reconnaissons pas ce format d'adresse email";
         }
+    } else {
+        echo "Please insert your email and password before signing up";
     }
 }
 
+if(isset($_POST['upload'])){
+
+    $emailPwdOK = true;
+    $extensionName = strtolower(substr(strrchr($_FILES['pic']['name'],'.'),1));
+    $photoOK = true;
+
+
+    if (!in_array($extensionName,array('jpg','jpeg','gif','png','tiff'))){
+        $photoOK = false;
+        $photoErrMsg="Profile picture has not been uploaded. File extension is not correct, should be .jpg,.jpeg,.gif,.png or .tiff";
+    }
+    if (!in_array($_FILES['pic']['type'],array('image/jpeg','image/gif','image/png','image/tiff'))) {
+        $photoOK = false;
+        $photoErrMsg="Profile picture has not been uploaded. File type is not correct, should be jpg/jpeg, gif, png or tiff";
+    }
+    if ($_FILES['pic']['error']){
+        $photoOK = false;
+        $photoErrMsg="Profile picture has not been uploaded. Error :".$_FILES['pic']['error'];
+    }
+    if ($_FILES['pic']['size'] > 1500000){
+        $photoOK = false;
+        $photoErrMsg="Profile picture exceeds max size (1,5 Mo). Please provide a adequate picture";
+    }
+    /*
+    if($photoOK = true){
+        $nom = "./resources/images/".$_POST['lastname']."_".$_POST['firstname'].".".$extensionName;
+    }*/
+    //exit;
+}
+
+
 if(isset($_POST['insert_role'])){
     //Check if fields are filled
+    $extensionName = strtolower(substr(strrchr($_FILES['pic']['name'],'.'),1));
+    $formOK = true;
     if(isset($_POST['firstname'],$_POST['lastname'],$_POST['title'],$_POST['company'],$_POST['location'],$_POST['startdate'])){
 
         $fname=$_POST['firstname'];
         $lname=$_POST['lastname'];
         $startdate=$_POST['startdate'];
 
-        if (strlen($fname)>=2 && strlen($lname)>=2){
+        //If the profile picture has not been incorrectly uploaded
+        if (isset($_FILES['pic'])){
 
+
+            $resultat = move_uploaded_file($_FILES['pic']['tmp_name'],"./resources/images/".$_POST['lastname']."_".$_POST['firstname'].".".$extensionName);
+        }
+
+        if(!(strlen($fname)>=2 && strlen($lname)>=2)){
+            $formOK = false;
+            echo "Please provide a First Name and Last Name with at least two characters";
+        }
+
+        if ($formOK){
+
+            $sql="INSERT INTO user(usr_firstname,usr_lastname,usr_mail,usr_pwd,usr_role)
+            VALUES (:fname,:lname,:email,:pwd,'user')";
+            $pdoStatement=$pdo->prepare($sql);
+            //$encPwd=password_hash($pwd,PASSWORD_DEFAULT);
+            $pdoStatement->bindValue(':fname',$fname, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':lname', $lname, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':email',$_SESSION['email'], PDO::PARAM_STR);
+            $pdoStatement->bindValue(':pwd', $_SESSION['pwd'], PDO::PARAM_STR);
+            $pdoStatement->execute();
+            $_SESSION['id']= $pdo->lastInsertId();
+            $_SESSION['role']= 'user';
+            //$_SESSION['email']= $mail;
+            /*
             $sql="UPDATE user
             SET usr_firstname=:fname ,usr_lastname=:lname
             WHERE usr_id = ". $_SESSION["id"];
@@ -86,7 +139,7 @@ if(isset($_POST['insert_role'])){
             $pdoStatement->bindValue(':fname',$fname, PDO::PARAM_STR);
             $pdoStatement->bindValue(':lname', $lname, PDO::PARAM_STR);
             $pdoStatement->execute();
-
+            */
 
             $sql="INSERT INTO experience(exp_title,exp_company,exp_location,exp_comment,exp_startdate,exp_enddate,user_usr_id)
             VALUES (:title,:company,:location,:comment,:startdate,:enddate,".$_SESSION['id'].")";
@@ -103,6 +156,8 @@ if(isset($_POST['insert_role'])){
             header("Location: profile.php");
             exit;
         }
+
+
     }
 }
 
