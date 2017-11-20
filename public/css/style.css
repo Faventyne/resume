@@ -22,6 +22,15 @@ main{
   width: auto;
   height: auto;
 }
+
+label+select{
+    display: block;
+}
+
+select{
+    padding :.375rem .75rem;
+}
+
 /*header{
   max-height:15vh;
 }

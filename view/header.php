@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
   <!-- Javascript libraries -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"> </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"> </script>
   <!-- Google captcha library -->
   <script src='https://www.google.com/recaptcha/api.js'></script>
   <!-- mon CSS -->

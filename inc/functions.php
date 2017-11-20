@@ -64,20 +64,27 @@ function sendEmail($to,$subject,$hmtlContent,$textContent=''){
 }
 
 function displayExpDates($start,$end){
-	$start = str_replace(array(' ', ':'), '-', $start);
-	$s    = explode('-', $start);
-	$s    = array_pad($s, 6, 0);
-	array_walk($s, 'intval');
-	$end = str_replace(array(' ', ':'), '-', $end);
-	$e    = explode('-', $end);
-	$e    = array_pad($e, 6, 0);
-	array_walk($e, 'intval');
-	$stmp=mktime($s[3], $s[4], $s[5], $s[1], $s[2], $s[0]);
-	$etmp=mktime($e[3], $e[4], $e[5], $e[1], $e[2], $e[0]);
+
+	if(!empty($start)){
+		$start = str_replace(array(' ', ':'), '-', $start);
+		$s    = explode('-', $start);
+		$s    = array_pad($s, 6, 0);
+		array_walk($s, 'intval');
+		$stmp=mktime($s[3], $s[4], $s[5], $s[1], $s[2], $s[0]);
+	}
+	if(!empty($end)){
+		$end = str_replace(array(' ', ':'), '-', $end);
+		$e    = explode('-', $end);
+		$e    = array_pad($e, 6, 0);
+		array_walk($e, 'intval');
+		$etmp=mktime($e[3], $e[4], $e[5], $e[1], $e[2], $e[0]);
+	}
+
+
 	if($stmp>time()){
 		return "Will start soon (".date("M y",$stmp) . ")";
 	} else {
-		if ($etmp>time()){
+		if (isset($etmp) && $etmp>time()||empty($etmp)){
 			return date("M y",$stmp). " - Present";
 		} else {
 			return date("M y",$stmp). " - ".date("M y",$etmp);
