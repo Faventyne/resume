@@ -1,10 +1,20 @@
+<main>
+
+  <div class="flow-dashboard">
+
+  </div>
 
 
-<div class="container">
-  <div class="card w-75 mx-auto mt-auto mb-auto">
-      <div class="card-body">
+  <div class="card w-75 mx-auto">
+    <div class="card-body">
+      <nav class="navbar navbar-light bg-white">
+        <button class="navbar-toggler bg-primary plusminus" type="button" data-toggle="collapse" data-target="#opportunity" aria-controls="opportunity" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="fa fa-plus" aria-hidden="true"></i></span>
+        </button>
+        <span class="mr-auto ml-3">Add new opportunity</span>
 
-          <h4 class="card-title"> Add new opportunity</h4>
+        <div class="collapse navbar-collapse" id="opportunity">
+
           <form action="" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="form-group col-md-6">
@@ -47,7 +57,7 @@
               </div>
             </div>
 
-            <div class="row ">
+            <div class="row">
                 <div class="form-group col-md-4">
                   <label for="stage">Stage</label>
                   <select class="btn btn-primary btn-stage" name="stage">
@@ -71,7 +81,7 @@
                  </div>
               </div>
 
-             <div class="row ">
+             <div class="row">
                  <div class="form-group col-md-6">
                    <label for="opp-startdate">Application release date :</label>
                    <input type="date" class="form-control" name="opp-startdate" aria-describedby="datestart">
@@ -87,9 +97,11 @@
 
 
 
-             <input type="submit" class="btn btn-primary" name="insert_opportunity" value="Update">
+             <input type="submit" class="btn btn-primary" name="insert_opportunity" value="Add">
 
            </form>
-      </div>
+        </div>
+      </nav>
+    </div>
   </div>
-</div>
+</main>
