@@ -5,7 +5,7 @@
   </div>
 
 
-  <div class="card w-75 mx-auto">
+  <div class="card w-75 mx-auto my-3">
     <div class="card-body">
       <nav class="navbar navbar-light bg-white">
         <button class="navbar-toggler bg-primary plusminus" type="button" data-toggle="collapse" data-target="#opportunity" aria-controls="opportunity" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,6 +55,11 @@
                  <label for="location">Location</label>
                  <input type="text" class="form-control" name="location" placeholder="">
               </div>
+            </div>
+
+            <div class="form-group ">
+                <input type="checkbox" name="intref" aria-label="Checkbox for following text input">
+                <label for="intref">Do you benefit from a internal reference ?</label>
             </div>
 
             <div class="row">

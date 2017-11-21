@@ -10,6 +10,7 @@ WHERE user_usr_id =".$_SESSION['id'] ;
 $pdoStatement = $pdo->prepare($sql);
 $pdoStatement->execute();
 $experiences=$pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+//print_r($experiences);
 
 $sql="SELECT * FROM skill
 LEFT OUTER JOIN user ON skill.user_usr_id = user.usr_id
@@ -18,6 +19,7 @@ WHERE user_usr_id =".$_SESSION['id'] ;
 $pdoStatement = $pdo->prepare($sql);
 $pdoStatement->execute();
 $skills=$pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+//print_r($skills);
 
 $sql="SELECT * FROM education
 LEFT OUTER JOIN user ON education.user_usr_id = user.usr_id
@@ -26,7 +28,7 @@ WHERE user_usr_id =".$_SESSION['id'] ;
 $pdoStatement = $pdo->prepare($sql);
 $pdoStatement->execute();
 $educations=$pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
+//print_r($educations);
 
 if(isset($_POST['insert_role'])){
     //Check if fields are filled
