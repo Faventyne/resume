@@ -5,7 +5,7 @@
   </div>
 
 
-  <div class="card w-75 mx-auto my-3">
+  <div class="card card-opportunity mx-auto my-3">
     <div class="card-body">
       <nav class="navbar navbar-light bg-white">
         <button class="navbar-toggler bg-primary plusminus" type="button" data-toggle="collapse" data-target="#opportunity" aria-controls="opportunity" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,14 +16,21 @@
         <div class="collapse navbar-collapse" id="opportunity">
 
           <form action="" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+               <label for="opp-name">Opportunity name</label>
+               <input type="text" class="form-control" name="opp-name"  placeholder="">
+               <small id="dptHelp" class="form-text text-muted">You can give it a name</small>
+            </div>
+
             <div class="row">
               <div class="form-group col-md-6">
-                 <label for="company">Company</label>
-                 <input type="text" class="form-control" name="company" placeholder="">
+                 <label for="opp-company">Company</label>
+                 <input type="text" class="form-control" name="opp-company" placeholder="" required>
               </div>
               <div class="form-group col-md-6">
                  <label for="industry">Industry</label>
-                 <select class="btn-primary" name="stage">
+                 <select class="btn btn-primary form-control" name="opp-industry">
                    <option value="1">Accounting, Finance, Insurance</option>
                    <option value="2">Marketing, Communication</option>
                    <option value="3">IT</option>
@@ -41,31 +48,31 @@
             </div>
 
             <div class="form-group">
-               <label for="role">Role</label>
-               <input type="text" class="form-control" name="role"  placeholder="  ">
+               <label for="opp-role">Role</label>
+               <input type="text" class="form-control" name="opp-role"  placeholder="" required>
             </div>
 
             <div class="row">
               <div class="form-group col-md-7">
-                 <label for="department">Department</label>
-                 <input type="text" class="form-control" name="department" aria-describedby="dptHelp" placeholder="">
+                 <label for="opp-department">Department</label>
+                 <input type="text" class="form-control" name="opp-department" aria-describedby="dptHelp" placeholder="">
                  <small id="dptHelp" class="form-text text-muted">Leave blank if unknown</small>
               </div>
               <div class="form-group col md-5">
-                 <label for="location">Location</label>
-                 <input type="text" class="form-control" name="location" placeholder="">
+                 <label for="opp-location">Location</label>
+                 <input type="text" class="form-control" name="opp-location" placeholder="">
               </div>
             </div>
 
-            <div class="form-group ">
-                <input type="checkbox" name="intref" aria-label="Checkbox for following text input">
-                <label for="intref">Do you benefit from a internal reference ?</label>
+            <div class="form-group">
+                <input type="checkbox" name="opp-intref" aria-label="Checkbox for following text input">
+                <label for="opp-intref">Do you benefit from a internal reference ?</label>
             </div>
 
             <div class="row">
                 <div class="form-group col-md-4">
                   <label for="stage">Stage</label>
-                  <select class="btn btn-primary btn-stage" name="stage">
+                  <select class="btn btn-primary btn-stage form-control" name="stage">
                     <option value="1">Online application</option>
                     <option value="2">First job interview</option>
                     <option value="3">Second job interview</option>
@@ -75,34 +82,36 @@
                   </select>
                  </div>
 
-                 <div class="form-group col-md-4">
-                   <label for="lastname">Success rate</label>
-                   <input type="text" class="form-control" name="successRate" placeholder="" value="3%">
+                 <div id="successRate" class="form-group col-md-4">
+                   <label for="opp-successrate">Success rate</label>
+                   <input type="text" class="form-control" name="opp-successrate" aria-describedby="successrateHelp" placeholder="" value="3%">
                  </div>
 
                  <div class="form-group col-md-4">
-                   <label for="lastname">Number of remaining applicants</label>
-                   <input type="text" class="form-control" name="nbCandidates" placeholder="">
+                   <label for="opp-candidates">Number of remaining applicants</label>
+                   <input type="text" class="form-control" aria-describedby="candidatesHelp" name="opp-candidates" placeholder="">
+                   <small id="candidatesHelp" class="form-text text-muted">Leave blank if unknown</small>
                  </div>
               </div>
 
              <div class="row">
                  <div class="form-group col-md-6">
                    <label for="opp-startdate">Application release date :</label>
-                   <input type="date" class="form-control" name="opp-startdate" aria-describedby="datestart">
-                   <small id="datestart" class="form-text text-muted"> Leave blank if unknown</small>
+                   <input type="date" class="form-control" name="opp-startdate" aria-describedby="datestartHelp">
+                   <small id="datestartHelp" class="form-text text-muted"> Leave blank if unknown</small>
                  </div>
 
                  <div class="form-group col-md-6">
                    <label for="opp-enddate">Application estimated closing date :</label>
-                   <input type="date" class="form-control" name="opp-enddate" aria-describedby="dateend">
-                   <small id="dateend" class="form-text text-muted"> Leave blank if unknown</small>
+                   <input type="date" class="form-control" name="opp-enddate" aria-describedby="dateendHelp">
+                   <small id="dateendHelp" class="form-text text-muted"> Leave blank if unknown</small>
                  </div>
              </div>
 
 
-
-             <input type="submit" class="btn btn-primary" name="insert_opportunity" value="Add">
+             <div class="text-center">
+               <input type="submit" class="btn btn-success col-md-6 center-block mx-auto" name="opp-submit" value="Add">
+             </div>
 
            </form>
         </div>

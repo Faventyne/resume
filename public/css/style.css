@@ -23,25 +23,20 @@ main{
   height: auto;
 }
 
-label+select{
+.data-error{
+  color: red;
+}
+
+.card-opportunity{
+  max-width: 90%;
+}
+
+.card-opportunity .card-body{
+  width: 90vw;
+}
+/*label+select{
     display: block;
-}
+}*/
 
-select{
-    padding :.375rem .75rem;
-}
 
-/*header{
-  max-height:15vh;
-}
-
-footer{
-  display: block;
-  max-height:5vh;
-}
-
-label{
-
-  text-align: left;
-}
 */
