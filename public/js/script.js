@@ -114,7 +114,7 @@
             var l =0;
             for(i = 0; i < m; i++){
                 for(j = i+1;j<m;j++){
-                    for(k = i+1;k < m;k++) {
+                    for(k = j+1;k < m;k++) {
                         for(l = k+1;l < m;l++){
                             finalProba -= p[i] * p[j] * p[k] * p[l];
                         }
@@ -126,7 +126,7 @@
             var n =0;
             for(i = 0; i < m; i++){
                 for(j = i+1;j<m;j++){
-                    for(k = i+1;k < m;k++) {
+                    for(k = j+1;k < m;k++) {
                         for(l = k+1;l < m;l++){
                             for(n = l+1;n < m;n++) {
                                 finalProba += p[i] * p[j] * p[k] * p[l] * p[n];
@@ -140,7 +140,7 @@
             var o =0;
             for(i = 0; i < m; i++){
                 for(j = i+1;j<m;j++){
-                    for(k = i+1;k < m;k++) {
+                    for(k = j+1;k < m;k++) {
                         for(l = k+1;l < m;l++){
                             for(n = l+1;n < m;n++) {
                                 for(o = n+1;o < m;o++){
@@ -156,7 +156,7 @@
             var q =0;
             for(i = 0; i < m; i++){
                 for(j = i+1;j<m;j++){
-                    for(k = i+1;k < m;k++) {
+                    for(k = j+1;k < m;k++) {
                         for(l = k+1;l < m;l++){
                             for(n = l+1;n < m;n++) {
                                 for(o = n+1;o < m;o++){
@@ -175,7 +175,7 @@
             var r =0;
             for(i = 0; i < m; i++){
                 for(j = i+1;j<m;j++){
-                    for(k = i+1;k < m;k++) {
+                    for(k = j+1;k < m;k++) {
                         for(l = k+1;l < m;l++){
                             for(n = l+1;n < m;n++) {
                                 for(o = n+1;o < m;o++){
@@ -195,7 +195,7 @@
             var s =0;
             for(i = 0; i < m; i++){
                 for(j = i+1;j<m;j++){
-                    for(k = i+1;k < m;k++) {
+                    for(k = j+1;k < m;k++) {
                         for(l = k+1;l < m;l++){
                             for(n = l+1;n < m;n++) {
                                 for(o = n+1;o < m;o++){
@@ -361,7 +361,7 @@
     function getOpp(){
         $.ajax({
             url: '../public/subopp.php',
-            data :{ userid : session_id},
+            data : { userid : session_id},
             dataType : 'json'
         }).done(function(g){
             dgo(g);
