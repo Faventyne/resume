@@ -11,8 +11,12 @@ main{
     float: right;
 }
 
-.fa-plus,.fa-minus{
+.fa-plus,.fa-minus, fa-pencil-square-o{
     color: white;
+}
+
+.btn-info{
+  float:right;
 }
 
 .card img {
@@ -27,6 +31,19 @@ main{
   color: red;
 }
 
+/* For putting opportunity title with same left padding as card body form*/
+.flow-dashboard{
+  display: block;
+  padding: 0.25rem 1.25rem;
+}
+
+/* Adjusting card title */
+.flow-success{
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
 .card-opportunity{
   max-width: 90%;
 }
@@ -34,9 +51,29 @@ main{
 .card-opportunity .card-body{
   width: 90vw;
 }
-/*label+select{
+[name="opp-appdate"]{
+    display: inline-block;
+}
+[column-id="Uncovered"]{
+  font-weight: bold ;
+}
+
+[dir="ltr"]{
+  margin: 0 auto;
+}
+svg>g>rect{
+  display: flex;
+  align-items: center;
+}
+
+
+
+@media (max-width: 400px){
+  .flow-dashboard{
     display: block;
-}*/
+    padding: 0.25rem 0.25rem;
+  }
+}
 
 
 */

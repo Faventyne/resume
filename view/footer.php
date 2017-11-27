@@ -5,6 +5,9 @@
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            var session_id = '<?= $_SESSION['id']?>';
+        </script>
         <script type="text/javascript" src="../public/js/script.js"></script>
 
         </script>

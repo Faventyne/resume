@@ -1,12 +1,18 @@
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <main>
 
-  <div class="flow-dashboard">
 
-  </div>
 
 
   <div class="card card-opportunity mx-auto my-3">
+
+
+
     <div class="card-body">
+        <div class="flow-success card-title"></div>
+        <div class="flow-dashboard card-block" id="flow-dashboard">
+        </div>
       <nav class="navbar navbar-light bg-white">
         <button class="navbar-toggler bg-primary plusminus" type="button" data-toggle="collapse" data-target="#opportunity" aria-controls="opportunity" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="fa fa-plus" aria-hidden="true"></i></span>
@@ -23,20 +29,37 @@
                <small id="dptHelp" class="form-text text-muted">You can give it a name</small>
             </div>
 
+            <div class="form-group">
+               <label for="opp-link">Link (if published online)</label>
+               <input type="text" class="form-control" name="opp-link"  placeholder="http://www...">
+               <!-- <small id="dptHelp" class="form-text text-muted">You can give it a name</small> -->
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-12">
+                  <input type="checkbox" name="opp-intref" aria-label="Checkbox for following text input">
+                  <label for="opp-intref">I already applied, on <input type="date" class="form-control" name="opp-appdate" aria-describedby="appdateHelp">
+                  </label>
+              </div>
+              <!-- <div class="form-group col-md-8">
+                <input type="date" class="form-control" name="opp-appdate" aria-describedby="appdateHelp">
+              </div> -->
+            </div>
+
             <div class="row">
               <div class="form-group col-md-6">
                  <label for="opp-company">Company</label>
                  <input type="text" class="form-control" name="opp-company" placeholder="" required>
               </div>
               <div class="form-group col-md-6">
-                 <label for="industry">Industry</label>
+                 <label for="opp-industry">Industry</label>
                  <select class="btn btn-primary form-control" name="opp-industry">
                    <option value="1">Accounting, Finance, Insurance</option>
                    <option value="2">Marketing, Communication</option>
                    <option value="3">IT</option>
                    <option value="4">Electrical, Environment</option>
                    <option value="5">Healthcare</option>
-                   <option value="6">Catering</option>
+                   <option value="6">Food, Catering</option>
                    <option value="7">Logistics, Warehouse</option>
                    <option value="8">Industrial, manufacturing</option>
                    <option value="9">Administrative, Job Office</option>
@@ -71,8 +94,8 @@
 
             <div class="row">
                 <div class="form-group col-md-4">
-                  <label for="stage">Stage</label>
-                  <select class="btn btn-primary btn-stage form-control" name="stage">
+                  <label for="opp-stage">Stage</label>
+                  <select class="btn btn-primary btn-stage form-control" name="opp-stage">
                     <option value="1">Online application</option>
                     <option value="2">First job interview</option>
                     <option value="3">Second job interview</option>
@@ -96,8 +119,8 @@
 
              <div class="row">
                  <div class="form-group col-md-6">
-                   <label for="opp-startdate">Application release date :</label>
-                   <input type="date" class="form-control" name="opp-startdate" aria-describedby="datestartHelp">
+                   <label for="opp-creadate">Application release date :</label>
+                   <input type="date" class="form-control" name="opp-creadate" aria-describedby="datestartHelp">
                    <small id="datestartHelp" class="form-text text-muted"> Leave blank if unknown</small>
                  </div>
 
@@ -116,6 +139,9 @@
            </form>
         </div>
       </nav>
+
     </div>
+
+
   </div>
 </main>
