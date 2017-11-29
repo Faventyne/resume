@@ -4,18 +4,19 @@ namespace Classes\DB;
 
 use Classes\Exceptions\InvalidSqlQueryException;
 
-abstract class DbObject {
+abstract class DbObject
+{
     /** @var int */
     protected $id;
     /** @var int */
     protected $inserted;
 
-    public function __construct($id=0, $inserted='') {
+    public function __construct($id = 0, $inserted = '')
+    {
         $this->id = $id;
         if (is_numeric($inserted)) {
             $this->inserted = $inserted;
-        }
-        else {
+        } else {
             $this->inserted = strtotime($inserted);
         }
     }
@@ -68,13 +69,16 @@ abstract class DbObject {
     /**
      * @return int
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * @return int
      */
-    public function getInserted() {
+    public function getInserted()
+    {
         return $this->inserted;
     }
+}

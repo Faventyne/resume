@@ -8,7 +8,7 @@
         <script type="text/javascript">
             var session_id = '<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : 0 ?>';
         </script>
-        <script type="text/javascript" src="../public/js/script.js"></script>
+       <script type="text/javascript" src="../public/js/script.js"></script>
 
         </script>
     </body>
