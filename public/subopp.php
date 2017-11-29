@@ -15,16 +15,14 @@ if(isset($_GET['userid'])){
 
 }
 
-if(isset($_POST['opp-role'])){
+if(!empty($_POST)){
 
 
-    $sql="INSERT INTO opportunity(opp_name,opp_link,opp_intref,opp_role,opp_department,opp_company,sector_sec_id,opp_location,opp_stage,opp_probability,opp_appdate,opp_creadate,opp_enddate,opp_candidates,user_usr_id)
+
+    $sql="INSERT INTO opportunity(opp_name,opp_link,opp_intref,opp_role,opp_department,opp_company,opp_sector,opp_location,opp_stage,opp_probability,opp_appdate,opp_creadate,opp_enddate,opp_candidates,user_usr_id)
     VALUES (:name,:link,:intref,:role,:dept,:company,:sector,:location,:stage,:proba,:appdate,:creadate,:enddate,:candidates,".$_SESSION['id'].")";
 
     //Form controls
-
-  /*$sql="INSERT INTO opportunity(opp_name,opp_link)
-  VALUES (:name,:link)";*/
 
 
     $pdoStatement=$pdo->prepare($sql);
@@ -49,10 +47,11 @@ if(isset($_POST['opp-role'])){
     $sql= "SELECT opp_name, opp_probability
     FROM opportunity
     WHERE user_usr_id =". $_SESSION['id'];
-    //echo "Coucou";
+
       $pdoStatement=$pdo->prepare($sql);
       $pdoStatement->execute();
       echo json_encode($pdoStatement->fetchAll(PDO::FETCH_ASSOC),JSON_PRETTY_PRINT);
+
 }
 
 ?>

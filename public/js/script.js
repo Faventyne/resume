@@ -389,13 +389,13 @@
                     'opp-creadate' : $('[name="opp-creadate"]').val(),
                     'opp-enddate' : $('[name="opp-enddate"]').val(),
                     'opp-candidates' : $('[name="opp-candidates"]').val(),
-                    'opp-appdate' : $('[name="opp-appdate"]').val(),
+                    'opp-appdate' : $('[name="opp-appdate"]').val()
             },
-            dataType : 'json',
+            dataType : 'json'
             //async : 'false'
-
         }).done(function(d){
-            dgo(d)}).fail(function(req, status, err) {
+            dgo(d)
+        }).fail(function(req, status, err) {
             console.log('something went wrong', status, err );
         });
     }
