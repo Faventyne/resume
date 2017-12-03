@@ -30,7 +30,7 @@
                 $('.card-body').append('<table class="table table-striped"><thead><tr><th>My opportunities</th></tr></thead><tbody></tbody></table>');
                 $.each(d, function(i,d){
                     if(i<e-1){
-                        $('tbody').append('<tr><td>'+d.opp_name+'<button class="navbar-toggler btn btn-info" type="button" data-toggle="exp-collapse" data-target="#exp-opportunity" aria-controls="exp-opportunity" aria-expanded="false" aria-label="Toggle navigation">\n' +
+                        $('tbody').append('<tr>' + '<td>'+d.opp_name+'<button class="navbar-toggler btn btn-info" type="button" data-toggle="exp-collapse" data-target="#exp-opportunity" aria-controls="exp-opportunity" aria-expanded="false" aria-label="Toggle navigation">\n' +
                             '          <span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>\n' +
                             '        </button></td></tr>')
                     }

@@ -2,6 +2,10 @@
     "require": {
         "phpmailer/phpmailer": "^6.0",
         "social-links/social-links": "^1.13",
-        "curl/curl": "^1.8"
+        "curl/curl": "^1.8",
+        "silex/silex": "^2.2",
+        "dflydev/doctrine-orm-service-provider": "^2.0",
+        "twig/twig": "^1.35"
+
     }
 }

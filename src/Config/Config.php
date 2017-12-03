@@ -5,7 +5,7 @@
  * Date: 27/11/2017
  * Time: 21:21
  */
-namespace Classes\Config
+namespace src\Config;
 class Config
 {
     /** @var \PDO */
