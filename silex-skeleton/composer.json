@@ -5,9 +5,6 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "phpmailer/phpmailer": "^6.0",
-        "social-links/social-links": "^1.13",
-        "curl/curl": "^1.8",
         "silex/silex": "~2.0",
         "silex/web-profiler": "~2.0",
         "symfony/asset": "~2.8|^3.0",
