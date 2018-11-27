@@ -1,6 +1,6 @@
 <?php
 
-namespace src;
+namespace Model;
 
 //use Classes\Exceptions\InvalidSqlQueryException;
 

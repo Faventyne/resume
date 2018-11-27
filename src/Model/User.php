@@ -6,8 +6,7 @@
  * Time: 21:38
  */
 
-namespace src;
-//require "DbObject.php";
+namespace Model;
 
 /**
  * @Entity @Table(name="user")

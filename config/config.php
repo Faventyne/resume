@@ -15,11 +15,12 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/src"),
 
 // Configuration de l'application
 $dbParams = [
-    'driver' => 'pdo_mysql',
-    'host' => 'wf3.progweb.fr',
-    'dbname' => 'guillaumec_jobflow',
-    'user' => 'guillaumec',
-    'password' => 'webforce3' ];
+    'driver'   => 'pdo_mysql',
+    'dbname'   => 'serpicotest',
+    'host'     => '192.168.162.162',
+    'user'     => 'serpicoadmin',
+    'password' => 'SerpicoAdmin',
+    ];
 
 
 // obtaining the entity manager

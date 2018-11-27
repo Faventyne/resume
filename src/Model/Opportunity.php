@@ -6,13 +6,24 @@
  * Time: 21:37
  */
 
-namespace src;
+namespace Model;
 
+/**
+ * @Entity @Table(name="opportunity")
+ */
 class Opportunity extends DbObject
 {
-    /** @var User */
+    /**
+     * @Column(name="usr_firstname", type="string")
+     * @var User
+     */
     protected $user;
-    /** @var string */
+
+
+
+    /** @var string
+     *
+     */
     protected $company;
     /** @var string */
     protected $role;

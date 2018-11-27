@@ -4,7 +4,7 @@ error_reporting(E_ALL | E_STRICT);
 
 //require_once __DIR__ .'/../inc/config.php';
 require_once "../config/config.php";
-require '../src/User.php';
+require '../src/Model/User.php';
 
 if(isset($_POST['disconnect']))
     {   session_destroy();
